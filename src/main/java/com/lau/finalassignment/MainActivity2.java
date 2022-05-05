@@ -14,6 +14,14 @@ public class MainActivity2 extends AppCompatActivity {
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main2);
+        Intent intent = getIntent();
+        String link = intent.getStringExtra("link");
+        web_view = (WebView) findViewById(R.id.webview);
+        web_view.getSettings().setJavaScriptEnabled(true);
+        web_view.setWebViewClient(new WebViewClient());
+        web_view.loadUrl(link);
 
     }
 }

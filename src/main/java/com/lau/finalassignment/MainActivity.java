@@ -47,3 +47,15 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
+        list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
+                intent.putExtra("link", course_links.get(i));
+                startActivity(intent);
+            }
+        });
+    }
+}
