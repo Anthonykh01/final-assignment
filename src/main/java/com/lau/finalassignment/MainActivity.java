@@ -30,3 +30,14 @@ public class MainActivity extends AppCompatActivity {
             SQLiteDatabase sql_lite_db = this.openOrCreateDatabase("coursesdb", MODE_PRIVATE, null);
             sql_lite_db.execSQL("CREATE Table if not exists courses (name VARCHAR, link VARCHAR)");
             sql_lite_db.execSQL("INSERT INTO courses(name, link) VALUES ('Mobile', 'https://developer.android.com/docs'), ('discrete2', 'http://discrete.openmathbooks.org/dmoi3.html'), ('cp3', 'https://www.programiz.com/dsa#:~:text=A%20data%20structure%20is%20a,efficient%20and%20optimized%20computer%20programs.')");
+            Cursor cursor = sql_lite_db.rawQuery("SELECT * FROM courses", null);
+            int name_index = cursor.getColumnIndex("name");
+            int link_index = cursor.getColumnIndex("link");
+            cursor.moveToFirst();
+            int i = 0;
+            while (i < cursor.getCount()) {
+                course_names.add(cursor.getString(name_index));
+                course_links.add(cursor.getString(link_index));
+                cursor.moveToNext();
+                i++;
+            }
