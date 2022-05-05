@@ -41,3 +41,9 @@ public class MainActivity extends AppCompatActivity {
                 cursor.moveToNext();
                 i++;
             }
+
+            ArrayAdapter adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, course_names);
+            list_view.setAdapter(adapter);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
